@@ -26,9 +26,9 @@ class CreateRecordsTable extends Migration
 
             $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('adviser_id')->references('id')->on('advisers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('adviser_id')->references('id')->on('advisors')->onDelete('cascade')->onUpdate('cascade');
 
-             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
