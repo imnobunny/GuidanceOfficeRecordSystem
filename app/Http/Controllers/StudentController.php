@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Relationship;
 
 class StudentController extends Controller
 {
@@ -23,7 +24,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        $relationships = Relationship::all();
+        return view('student.create')->with('relationships', $relationships);
     }
 
     /**
