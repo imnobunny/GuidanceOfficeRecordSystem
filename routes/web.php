@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('/add/student', 'StudentController@create');
 Route::post('/save/student', 'StudentController@store');
+Route::get('/view/student/{id}', 'StudentController@show');
 Route::get('/home', 'HomeController@index')->name('home');

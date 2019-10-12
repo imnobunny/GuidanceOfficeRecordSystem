@@ -64,7 +64,7 @@
                     <td>{{$student->home_address}}</td>
                     <td>{{$student->contact_number}}</td>
                     <td>
-                        <a href="#" class="btn btn-info">View</a>
+                        <a href="/view/student/{{$student->id}}" class="btn btn-info">View</a>
                         <a href="#" class="btn btn-success mr-1">Records</a>
                     </td>
                   </tr>
