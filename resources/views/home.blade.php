@@ -65,7 +65,7 @@
                     <td>{{$student->contact_number}}</td>
                     <td>
                         <a href="/view/student/{{$student->id}}" class="btn btn-info">View</a>
-                        <a href="#" class="btn btn-success mr-1">Records</a>
+                    <a href="/view/record/{{$student->id}}" class="btn btn-success mr-1">Records</a>
                     </td>
                   </tr>
                   @endforeach

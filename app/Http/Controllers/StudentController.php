@@ -129,6 +129,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        dd("to be destroy via form");
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->action('HomeController@index');
     }
 }

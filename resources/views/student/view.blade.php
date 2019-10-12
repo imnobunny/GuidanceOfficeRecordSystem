@@ -62,10 +62,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <form action="" action="get">
-                @csrf
-                {{ method_field('delete') }}
-                <a href="/student/{{$student->id}}" class="btn btn-warning">Yes</a>
+         <form action="/delete/student/{{$student->id}}" method="">
+            {{ csrf_field() }}
+           {{method_field('delete')}}
+           <input type="submit" name="Test" id="" class="btn btn-warning btn-delete-student">
+            {{-- <a href="/delete/student/{{$student->id}}" class="btn btn-warning btn-delete-student">Delete test</a> --}}
+         </form>
+          
           </form>
         </div>
       </div>

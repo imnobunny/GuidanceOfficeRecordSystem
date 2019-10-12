@@ -10,4 +10,9 @@ class Student extends Model
     {
         return $this->belongsTo('App\Relationship');
     }
+
+    public function records()
+    {
+        return $this->hasMany('App\Record');
+    }
 }
