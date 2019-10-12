@@ -6,7 +6,9 @@
             <h4 class="text-right">Add New Student</h4>
         </div>
         <div class="col-6 border py-3">
-            <form action="" method="POST" enctype='multipart/form-data'>
+            <form action="/save/student" method="POST" enctype='multipart/form-data' id="add_new_student_form">
+                @csrf
+                {{ method_field('POST') }}
                 <div class="form-group mt-3 py-1 px-3">
                     <label for="name">Student Name</label>
                     <input type="text" class="form-control" name="name" id="name">
@@ -38,7 +40,7 @@
                     </div>
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="" class="mr-2">Relationship to the Guardian</label>
-                        <select class="btn border">
+                        <select class="btn border" name="relationship">
                             @foreach($relationships as $relationship)
                         <option value="{{$relationship->id}}">{{$relationship->relationship}}</option>
                             @endforeach
@@ -49,7 +51,7 @@
                             <input type="file" name="student_picture"class="form-control">
                     </div>
                     <div class="form-group d-flex flex-row-reverse bd-highlight">
-                        <button class="btn btn-warning p-2 bd-highlight" id="btn_save_new_student" type="button">Save New Student</button>
+                        <button class="btn btn-warning p-2 bd-highlight btn_save_new_student" type="submit">Save New Student</button>
                     </div>
             </form>       
         </div>

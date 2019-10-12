@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Relationship;
+use App\Student;
 
 class StudentController extends Controller
 {
@@ -36,7 +37,29 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'gender' => 'required',
+            'home_address' => 'required',
+            'student_contact' => 'required',
+            'guardian_name' => 'required',
+            'guardian_contact' => 'required',
+            //'student_picture' => 'required',
+            'relationship' => 'required'
+        ]);
+    //    dd("tokwa");
+        $new_student = new Student;
+        $new_student->name = $request->input('name');
+        $new_student->gender = $request->input('gender');
+        $new_student->home_address = $request->input('home_address');
+        $new_student->contact_number = $request->input('student_contact');
+        $new_student->guardian_name = $request->input('guardian_name');
+        $new_student->guardian_contact = $request->input('guardian_contact');
+        //$new_student->student_picture = $request->input('student_picture');
+        $new_student->relationship_id = $request->input('relationship');
+        $new_student->save();
+        
+        return redirect()->action('HomeController@index');
     }
 
     /**

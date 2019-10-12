@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 Route::get('/add/student', 'StudentController@create');
+Route::post('/save/student', 'StudentController@store');
 Route::get('/home', 'HomeController@index')->name('home');

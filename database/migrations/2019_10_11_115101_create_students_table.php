@@ -20,10 +20,11 @@ class CreateStudentsTable extends Migration
             // $table->date('Y-m-d', strtotime('date'));
             $table->string('home_address');
             $table->string('contact_number');
-            $table->string('student_picture');
+            $table->string('student_picture')->default('https://via.placeholder.com/150');
             $table->string('guardian_name');
             $table->string('guardian_contact');
             $table->unsignedBigInteger('relationship_id');
+            $table->timestamps();
 
             $table->foreign('relationship_id')
                 ->references('id')
