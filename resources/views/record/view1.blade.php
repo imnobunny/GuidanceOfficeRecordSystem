@@ -15,20 +15,12 @@
                               </tr>
                             </thead>
                             <tbody>
-                                @foreach($records as $record)
                               <tr>
-                                <th scope="row">1</th>
-                                <td>{{$record->case_title}}</td>
-                                <td>{{$record->grade_year}}</td>
-                                <td>{{$record->penalty}}</td>
-                                <td>
-                                    <a href="#">{{$record->adviser->teacher_name}}</a>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-primary">view</a>
+                                <th scope="row"></th>
+                                <td scope="col" colspan="6">
+                                    <p class="text-center mt-3">No Records Found</p>
                                 </td>
                               </tr>
-                              @endforeach
                             </tbody>
                           </table>
                     </div>

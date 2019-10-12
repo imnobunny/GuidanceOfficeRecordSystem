@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Record;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $records_count = Record::count();
         $students = Student::all();
-        return view('home')->with('students', $students);
+        return view('home', compact('students', 'records_count'));
     }
 }

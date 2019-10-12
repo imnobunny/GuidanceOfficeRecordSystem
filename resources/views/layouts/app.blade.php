@@ -80,6 +80,6 @@
     </div>
     <script src="{{ asset('js/addNewStudent.js') }}" ></script>
     <script src="{{ asset('js/editStudent.js') }}" ></script>
-    <script src="{{ asset('js/deleteStudent.js') }}" ></script>
+    <script src="{{ asset('js/addRecord.js') }}" ></script>
 </body>
 </html>

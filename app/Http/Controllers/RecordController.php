@@ -24,7 +24,7 @@ class RecordController extends Controller
      */
     public function create()
     {
-        //
+        dd("test");
     }
 
     /**
@@ -52,7 +52,7 @@ class RecordController extends Controller
           $records = Record::where('student_id', $id)->get();
           return view('record.view')->with('records', $records);
         } else {
-            dd("records < 0");
+           return view('record.view1');
         }
     }
 

@@ -20,12 +20,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-Route::get('/add/student', 'StudentController@create');
-Route::post('/save/student', 'StudentController@store');
-Route::get('/view/record/{id}', 'RecordController@show');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/add/student', 'StudentController@create');
+
+Route::post('/save/student', 'StudentController@store');
+
+Route::get('/view/record/{id}', 'RecordController@show');
+Route::get('/edit/student/{id}', 'StudentController@edit');
 Route::get('/delete/student/{id}', 'StudentController@destroy');
 Route::get('/view/student/{id}', 'StudentController@show');
 Route::get('/update/student/{id}', 'StudentController@update');
 Route::get('/edit/student/{id}', 'StudentController@edit');
+Route::get('/add/record/${id}', 'RecordController@create');
 

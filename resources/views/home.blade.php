@@ -35,7 +35,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Records
-                  <span class="badge badge-primary badge-pill">2</span>
+                <span class="badge badge-primary badge-pill">{{$records_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Reports
@@ -65,7 +65,17 @@
                     <td>{{$student->contact_number}}</td>
                     <td>
                         <a href="/view/student/{{$student->id}}" class="btn btn-info">View</a>
-                    <a href="/view/record/{{$student->id}}" class="btn btn-success mr-1">Records</a>
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Records
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/view/record/{{$student->id}}">View Records</a>
+                                <a class="dropdown-item" href="/add/record">Add New Record</a>
+                            </div>
+                        </div>
                     </td>
                   </tr>
                   @endforeach
