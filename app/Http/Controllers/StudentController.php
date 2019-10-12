@@ -83,7 +83,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        $relationships = Relationship::all();
+        return view('student.edit', compact('student', 'relationships'));
     }
 
     /**
@@ -95,7 +97,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("test");
     }
 
     /**

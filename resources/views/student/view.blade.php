@@ -3,8 +3,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6 mt-3">
-            <h4 class="text-right">Student Info</h4>
+        <div class="col-6">
+            <img src="{{$student->student_picture}}" alt="..." class="img-thumbnail  float-right">
         </div>
         <div class="col-6 border py-3">
                 <div class="form-group mt-3 py-1 px-3">
@@ -38,13 +38,9 @@
                             
                         </select>
                     </div>
-                    <div class="form-group mt-3 py-1 px-3">
-                            <label for="">Student's Picture</label>
-                            <input type="file" name="student_picture"class="form-control">
-                    </div>
                     <div class="form-group d-flex flex-row-reverse bd-highlight">
-                        <button class="btn btn-warning p-2 bd-highlight mr-2 ml-2 " type="submit">Edit Student's Info</button>
-                        <button class="btn btn-info p-2 bd-highlight " type="submit">Back</button>
+                        <a href="/edit/student/{{$student->id}}" class="btn btn-warning p-2 bd-highlight mr-2 ml-2">Edit Student Info</a>
+                       <a href="{{ URL()->previous()}}" class="btn btn-info p-2 bd-highlight">Back</a>
                     </div>
             </form>       
         </div>

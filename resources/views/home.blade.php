@@ -31,7 +31,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Delete Student</a>
                           </div>
-                  <span class="badge badge-primary badge-pill">14</span>
+                        <span class="badge badge-primary badge-pill">{{$students->count()}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Records
