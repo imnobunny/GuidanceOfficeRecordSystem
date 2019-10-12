@@ -39,11 +39,37 @@
                         </select>
                     </div>
                     <div class="form-group d-flex flex-row-reverse bd-highlight">
-                        <a href="/edit/student/{{$student->id}}" class="btn btn-warning p-2 bd-highlight mr-2 ml-2">Edit Student Info</a>
-                       <a href="{{ URL()->previous()}}" class="btn btn-info p-2 bd-highlight">Back</a>
+                        <a href="/edit/student/{{$student->id}}" class="btn btn-warning p-2 bd-highlight mr-2 ">Edit Student Info</a>
+                        <a href="#" class="btn btn-danger p-2 bd-highlight mr-2" data-toggle="modal" data-target="#deleteStudent">Delete Student</a>
+                        <a href="{{ URL()->previous()}}" class="btn btn-info p-2 bd-highlight mr-2">Back</a>
                     </div>
             </form>       
         </div>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Please confirm</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure do you want to delete information of student <strong>{{$student->name}}</strong>?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <form action="" action="get">
+                @csrf
+                {{ method_field('delete') }}
+                <a href="/student/{{$student->id}}" class="btn btn-warning">Yes</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection

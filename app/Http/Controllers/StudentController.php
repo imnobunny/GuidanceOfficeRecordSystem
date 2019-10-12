@@ -97,7 +97,28 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd("test");
+        $this->validate($request, [
+            'name' => 'required',
+            'gender' => 'required',
+            'home_address' => 'required',
+            'student_contact' => 'required',
+            'guardian_name' => 'required',
+            'guardian_contact' => 'required',
+            //'student_picture' => 'required',
+            'relationship' => 'required'
+        ]);
+
+        $student = Student::find($id);
+        $student ->name = $request->input('name');
+        $student ->gender = $request->input('gender');
+        $student ->home_address = $request->input('home_address');
+        $student ->contact_number = $request->input('student_contact');
+        $student ->guardian_name = $request->input('guardian_name');
+        $student ->guardian_contact = $request->input('guardian_contact');
+        $student ->relationship_id = $request->input('relationship');
+        $student->save();
+
+        //return redirect("/view/student/$id");
     }
 
     /**
@@ -108,6 +129,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd("to be destroy via form");
     }
 }

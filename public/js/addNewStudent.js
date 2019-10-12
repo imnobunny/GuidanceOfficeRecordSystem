@@ -1,5 +1,3 @@
-
-
 document.addEventListener('click', function(e){
     if(e.target.classList.contains('btn_save_new_student')){
         let form_add_new_student = document.querySelector("#add_new_student_form");
@@ -12,7 +10,7 @@ document.addEventListener('click', function(e){
         .then(function(response){
             return response.text();
         }).then(function(data_from_fetch_page){
-            console.log(data_from_fetch_page);
+            window.location.replace(`/home`);
         })
     }
 })

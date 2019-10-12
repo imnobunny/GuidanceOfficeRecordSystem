@@ -4,23 +4,23 @@
     <div class="row">
         <div class="col-6 mt-3">
             <h4 class="text-right">Edit Form</h4>
+            
         </div>
         <div class="col-6 border py-3">
-            <form action="/edit/student/{{$student->id}}" method="GET" enctype='multipart/form-data' id="edit_student_form">
+            <form action="" method="GET" enctype='multipart/form-data' id="edit_student_form">
                 @csrf
                 {{ method_field('GET') }}
+                <img src="{{$student->student_picture}}" alt="..." class="img-thumbnail  float-center">
                 <div class="form-group mt-3 py-1 px-3">
                     <label for="name">Student Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{$student->name}}">
                 </div>
                 <div class="form-group py-1 px-3">
                     <label for="">Gender</label>
-                    <div class="ml-5 mb-2">
-                        <input type="radio" name="gender" value="Female" checked> Female
-                    </div>
-                    <div class="ml-5">
-                        <input type="radio" name="gender" value="Male" active> Male
-                    </div>
+                    <select class="btn border ml-2" name="gender">
+                        <option value="Female" {{$student->gender == "Female"? "selected" : ""}}>Female</option>
+                        <option value="Male" {{$student->gender == "Male"? "selected" : ""}}>Male</option>
+                    </select>
                 </div>  
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="">Home Address</label>
@@ -50,8 +50,9 @@
                             <label for="">Student's Picture</label>
                             <input type="file" name="student_picture"class="form-control">
                     </div>
-                    <div class="form-group d-flex flex-row-reverse bd-highlight">
-                        <button class="btn btn-warning p-2 bd-highlight btn-block" type="submit">Update</button>
+                        <div class="form-group d-flex flex-row-reverse bd-highlight">
+                        <input type="hidden" id="student_id" value="{{$student->id}}">
+                        <button class="btn btn-warning p-2 bd-highlight btn-block btn-update-student-info" type="button">Update</button>
                     </div>
             </form>       
         </div>
