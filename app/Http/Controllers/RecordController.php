@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Record;
 use App\Student;
 use App\Adviser;
+use App\Status;
 
 class RecordController extends Controller
 {
@@ -87,8 +88,11 @@ class RecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $advisers = Adviser::all();
+        $statuses = Status::all();
+        $record = Record::find($id);
+        return view ('record.edit', compact('record', 'statuses', 'advisers'));
     }
 
     /**
@@ -100,7 +104,37 @@ class RecordController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //dd("test update");
+       $this->validate($request, [
+        'case_title' => 'required',
+        'grade_year' => 'required',  
+        'complain' => 'required',
+        'complainant' => 'required',
+        'penalty' => 'required',
+        'user_id' => 'required',
+        'adviser_id' => 'required',
+        'student_id' => 'required',
+        'status_id' => 'required',
+       ]);
+
+      
+       $student = Student::find($id);
+       $student ->name = $request->input('name');
+       
+        $record = Record::find($id);
+        // dd($record);
+        $record->case_title = $request->input('case_title');
+        $record->grade_year = $request->input('grade_year');
+        $record->complain = $request->input('complain');
+        $record->complainant = $request->input('complainant');
+        $record->penalty = $request->input('penalty');
+        $record->user_id = $request->input('user_id');
+        $record->adviser_id = $request->input('adviser_id');
+        $record->student_id = $request->input('student_id');
+        $record->status_id = $request->input('status_id');
+        $record->save();
+
+        return view('/home');
     }
 
     /**
@@ -133,7 +167,6 @@ class RecordController extends Controller
         //dd($student);
         return view ('record.create', compact('student', 'advisers'));
 
-        
     }
 
 }

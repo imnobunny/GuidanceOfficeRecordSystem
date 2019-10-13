@@ -1,4 +1,3 @@
-console.log("ADD NEW RECORDS");
 
 document.addEventListener('click', function(e){
     if(e.target.classList.contains('btn_add_new_record')){

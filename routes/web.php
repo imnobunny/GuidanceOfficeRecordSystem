@@ -33,6 +33,7 @@ Route::get('/update/student/{id}', 'StudentController@update');
 Route::get('/records/{id}', 'RecordController@allrecords');
 Route::get('/record/new/{id}', 'RecordController@addrecord');
 Route::get('/record/view/{id}', 'RecordController@show');
-
+Route::get('/record/edit/{id}', 'RecordController@edit');
+Route::post('/record/update/{id}', 'RecordController@update');
 
 

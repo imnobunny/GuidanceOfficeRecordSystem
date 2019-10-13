@@ -17,7 +17,7 @@
                             <tbody>
                                 @foreach($records as $record)
                               <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$record->case_title}}</td>
                                 <td>{{$record->grade_year}}</td>
                                 <td>{{$record->penalty}}</td>
@@ -30,7 +30,10 @@
                                       data-complainant = "{{$record->complainant}}" data-penalty ="{{$record->penalty}}" data-user ="{{$record->user_id}}" 
                                       data-adviser ="{{$record->adiviser_id}}" data-student ="{{$record->student_id}}">
                                       view
-                                </a>
+                                   </a>
+                                   <a href="/record/edit/{{$record->id}}" class="btn btn-warning">
+                                     Edit
+                                   </a>
                                 </td>
                               </tr>
                               @endforeach
