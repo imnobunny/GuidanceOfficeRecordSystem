@@ -81,5 +81,6 @@
     <script src="{{ asset('js/addNewStudent.js') }}" ></script>
     <script src="{{ asset('js/editStudent.js') }}" ></script>
     <script src="{{ asset('js/addRecord.js') }}" ></script>
+    <script src="{{ asset('js/viewRecord.js') }}" ></script>
 </body>
 </html>

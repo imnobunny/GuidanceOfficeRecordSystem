@@ -23,6 +23,7 @@ class CreateRecordsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('adviser_id');
             $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('status_id');
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -40,6 +41,12 @@ class CreateRecordsTable extends Migration
             $table->foreign('student_id')
                 ->references('id')
                 ->on('students')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            
+            $table->foreign('status_id')
+                ->references('id')
+                ->on('statuses')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

@@ -72,8 +72,8 @@
                                 Records
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/view/record/{{$student->id}}">View Records</a>
-                                <a class="dropdown-item" href="/add/record">Add New Record</a>
+                                <a class="dropdown-item" href="/records/{{$student->id}}">View Records</a>
+                                <a class="dropdown-item" href="#" >Add New Record</a>
                             </div>
                         </div>
                     </td>

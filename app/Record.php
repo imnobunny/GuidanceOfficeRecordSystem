@@ -16,8 +16,12 @@ class Record extends Model
         return $this->belongsTo('App\Adviser');
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo('App\User');
-    // }
+    public function status()
+    {
+        return $this->belongsTo('App\Status');
+    }
+    public function advisers()
+    {
+        return $this->hasMany('App\Advisers');
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Record;
+use App\Student;
+use App\Adviser;
 
 class RecordController extends Controller
 {
@@ -22,9 +24,11 @@ class RecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        dd("test");
+      //dd($id);
+       $student = Student::find($id);
+       return view('record.create')->with('student', $student);
     }
 
     /**
@@ -46,14 +50,9 @@ class RecordController extends Controller
      */
     public function show($id)
     {   
-        $record_counts = Record::where('student_id', $id)->count();
-        // dd($records);
-        if($record_counts !== 0){
-          $records = Record::where('student_id', $id)->get();
-          return view('record.view')->with('records', $records);
-        } else {
-           return view('record.view1');
-        }
+        //dd('show');
+        $record = Record::find($id);
+        return view ('record.view')->with('record', $record);
     }
 
     /**
@@ -89,4 +88,17 @@ class RecordController extends Controller
     {
         //
     }
+
+    public function allrecords($id)
+    {
+      // dd("allrecords");
+        $records = Record::where('student_id', $id)->get();
+        if($records->count() > 0){
+            return view('record.allrecords')->with('records', $records);
+        } else {
+            return view('record.view1');
+        }
+    }
+
+
 }
