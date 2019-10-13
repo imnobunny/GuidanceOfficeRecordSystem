@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //students
-
+Route::post('/record/add/', 'RecordController@store');
 Route::get('/add/student', 'StudentController@create');
 Route::post('/save/student', 'StudentController@store');
 Route::get('/edit/student/{id}', 'StudentController@edit');
@@ -33,5 +33,6 @@ Route::get('/update/student/{id}', 'StudentController@update');
 Route::get('/records/{id}', 'RecordController@allrecords');
 Route::get('/record/new/{id}', 'RecordController@addrecord');
 Route::get('/record/view/{id}', 'RecordController@show');
+
 
 

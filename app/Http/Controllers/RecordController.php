@@ -37,7 +37,35 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'case_title' => 'required',
+            'complainant' => 'required',
+            'complain' => 'required',
+            'penalty' => 'required',
+            'adviser_id' => 'required',
+            'grade_year' => 'required',
+            'user_id' => 'required',
+            'student_id' => 'required',
+            'status_id' => 'required'
+        ]);
+
+
+        // $new_student = new Student;
+        // $new_student->name = $request->input('name');
+
+        $new_record = new Record;
+        $new_record->case_title = $request->input('case_title');
+        $new_record->complainant = $request->input('complainant');
+        $new_record->complain = $request->input('complain'); 
+        $new_record->penalty = $request->input('penalty');
+        $new_record->adviser_id = $request->input('adviser_id');
+        $new_record->grade_year = $request->input('grade_year');
+        $new_record->user_id = $request->input('user_id');
+        $new_record->student_id = $request->input('student_id');
+        $new_record->status_id = $request->input('status_id');
+        $id =  $request->input('student_id');
+        $new_record->save();
+        return redirect("/records/{$id}");
     }
 
     /**
@@ -101,8 +129,9 @@ class RecordController extends Controller
     {
     // dd("test");
         $student = Student::find($id);
+        $advisers = Adviser::all();
         //dd($student);
-        return view ('record.create')->with('student', $student);
+        return view ('record.create', compact('student', 'advisers'));
 
         
     }
