@@ -73,7 +73,7 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/records/{{$student->id}}">View Records</a>
-                                <a class="dropdown-item" href="#" >Add New Record</a>
+                                <a class="dropdown-item" href="/record/new/{{$student->id}}" >Add New Record</a>
                             </div>
                         </div>
                     </td>

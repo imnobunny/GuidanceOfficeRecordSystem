@@ -24,11 +24,9 @@ class RecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-      //dd($id);
-       $student = Student::find($id);
-       return view('record.create')->with('student', $student);
+        dd("create");
     }
 
     /**
@@ -49,8 +47,7 @@ class RecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-        //dd('show');
+    {  
         $record = Record::find($id);
         return view ('record.view')->with('record', $record);
     }
@@ -100,5 +97,14 @@ class RecordController extends Controller
         }
     }
 
+    public function addrecord($id)
+    {
+    // dd("test");
+        $student = Student::find($id);
+        //dd($student);
+        return view ('record.create')->with('student', $student);
+
+        
+    }
 
 }
