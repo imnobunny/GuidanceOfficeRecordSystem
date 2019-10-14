@@ -7,6 +7,8 @@ use App\Record;
 use App\Student;
 use App\Adviser;
 use App\Status;
+use Session;
+
 
 class RecordController extends Controller
 {
@@ -38,6 +40,7 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'case_title' => 'required',
             'complainant' => 'required',
@@ -49,7 +52,6 @@ class RecordController extends Controller
             'student_id' => 'required',
             'status_id' => 'required'
         ]);
-
 
         // $new_student = new Student;
         // $new_student->name = $request->input('name');
@@ -66,6 +68,7 @@ class RecordController extends Controller
         $new_record->status_id = $request->input('status_id');
         $id =  $request->input('student_id');
         $new_record->save();
+
         return redirect("/records/{$id}");
     }
 
@@ -103,8 +106,8 @@ class RecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-       //dd("test update");
+    {   
+       
        $this->validate($request, [
         'case_title' => 'required',
         'grade_year' => 'required',  
@@ -118,11 +121,10 @@ class RecordController extends Controller
        ]);
 
       
-       $student = Student::find($id);
-       $student ->name = $request->input('name');
-       
+        $student = Student::find($id);
+        $student ->name = $request->input('name');
+    
         $record = Record::find($id);
-        // dd($record);
         $record->case_title = $request->input('case_title');
         $record->grade_year = $request->input('grade_year');
         $record->complain = $request->input('complain');
@@ -131,12 +133,12 @@ class RecordController extends Controller
         $record->user_id = $request->input('user_id');
         $record->adviser_id = $request->input('adviser_id');
         $record->student_id = $request->input('student_id');
+        $student_id = $record->student_id;
         $record->status_id = $request->input('status_id');
         $record->save();
 
-        return view('/home');
+        return redirect()->back()->with('success', "test alert");
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -145,7 +147,11 @@ class RecordController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = Record::find($id);
+        $student_id = $record->student_id;
+        $record->delete();
+
+        return redirect("/view/student/$student_id");
     }
 
     public function allrecords($id)
@@ -155,6 +161,7 @@ class RecordController extends Controller
         if($records->count() > 0){
             return view('record.allrecords')->with('records', $records);
         } else {
+            // dd('test1');
             return view('record.view1');
         }
     }

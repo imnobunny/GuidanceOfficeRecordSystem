@@ -7,7 +7,7 @@
             
         </div>
         <div class="col-6 border py-3">
-            <form action="" method="GET" enctype='multipart/form-data' id="edit_student_form">
+            <form action="/update/student/{{$student->id}}" method="GET" enctype='multipart/form-data' id="edit_student_form">
                 @csrf
                 {{ method_field('GET') }}
                 <img src="{{$student->student_picture}}" alt="..." class="img-thumbnail  float-center">
@@ -52,7 +52,7 @@
                     </div>
                         <div class="form-group d-flex flex-row-reverse bd-highlight">
                         <input type="hidden" id="student_id" value="{{$student->id}}">
-                        <button class="btn btn-warning p-2 bd-highlight btn-block btn-update-student-info" type="button">Update</button>
+                        <button class="btn btn-warning p-2 bd-highlight btn-block btn-update-student-info" type="submit">Update</button>
                     </div>
             </form>       
         </div>

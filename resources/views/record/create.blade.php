@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-block btn-info btn_add_new_record py-2 px-2 mt-2" type="button">Save New Record</button>
+                        <button class="btn btn-block btn-info btn_add_new_record py-2 px-2 mt-2" type="submit">Save New Record</button>
                     </div>
                     {{-- hidden inputs --}}
                     <div class="form-group">

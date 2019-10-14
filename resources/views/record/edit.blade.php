@@ -46,22 +46,22 @@
                         <label for="">Adviser</label>
                         <select id="adviser_id" name="adviser_id" id="adviser_id" class="form-control">
                             @foreach($advisers as $adviser)
-                                <option value="{{$adviser->id}}" class="py-2 px-2 ">{{$adviser->teacher_name}}</option>
+                                <option value="{{$adviser->id}}" class="py-2 px-2" {{$record->adviser_id == $adviser->id ? "selected" : ""}}>{{$adviser->teacher_name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         
                         <input type="hidden" value="{{$record->student_id}}" name="student_id" id="student_id">
-                       
+                    
                         <input type="hidden" value="{{$record->user_id}}" name="user_id" id="user_id">
                         
                         <input type="hidden" value="{{$record->id}}" name="record_id" id="record_id">
                     </div>
-                    <div class="col-2 form-group mt-4">
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#confirmation" type="button">Save</button>
-                        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
-                    </div>    
+                    <div class="col-12 form-group mt-4">
+                        <button class="btn btn-danger form-control" data-toggle="modal" data-target="#confirmation" type="submit">Save</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-primary form-control mt-2">Back</a>
+                    </div>   
                 </form>
             </div>
         </div>

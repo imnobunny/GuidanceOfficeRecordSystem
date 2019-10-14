@@ -34,6 +34,10 @@
                                    <a href="/record/edit/{{$record->id}}" class="btn btn-warning">
                                      Edit
                                    </a>
+                                    </a>
+                                   <a href="" class="btn btn-danger" data-toggle="modal" data-target="#deleteRecord">
+                                     Delete
+                                   </a>
                                 </td>
                               </tr>
                               @endforeach
@@ -44,5 +48,29 @@
             </div>
         </div>
     </div>
-    
+    <!-- MODAL -->
+    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Delete Record</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want to delete record with case title: <strong>{{$record->case_title}}</strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <form method="POST" action="/record/delete/{{$record->id}}">
+              @csrf
+              {{ method_field('delete')}}
+            <input type="Hidden" value="{{$record->id}}" name="record_id">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 @endsection

@@ -82,7 +82,7 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
         $student = Student::find($id);
         $relationships = Relationship::all();
         return view('student.edit', compact('student', 'relationships'));
@@ -118,7 +118,7 @@ class StudentController extends Controller
         $student ->relationship_id = $request->input('relationship');
         $student->save();
 
-        //return redirect("/view/student/$id");
+        return redirect("/view/student/$id");
     }
 
     /**
