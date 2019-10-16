@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/636ad96d92.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
@@ -75,8 +78,9 @@
         </nav>
 
         <main class="py-4">
+            @include('partials.alert')  
             @yield('content')
-            @include('partials.alert')
+          
         </main>
     </div>
     <script src="{{ asset('js/addNewStudent.js') }}" ></script>

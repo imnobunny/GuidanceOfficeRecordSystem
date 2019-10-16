@@ -14,37 +14,18 @@
                         </div>
 
                     </div>
-                <div class="form-group p-2">
-                    
+                <div class="form-group p-2">    
+                    <a href="/add/student" class="btn btn-info"> <i class="fas fa-2 fa-user-plus"></i> Add New Student</a>
+                    <button type="button" class="btn btn-warning"> <i class="fas fa-file-medical"></i> Add New Record</button>
                 </div>
                
             </form>
         </div>
-        <div class="col-2">
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
-                    <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/add/student">Add New Student</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Edit Student</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Delete Student</a>
-                          </div>
-                        <span class="badge badge-primary badge-pill">{{$students->count()}}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Records
-                <span class="badge badge-primary badge-pill">{{$records_count}}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Reports
-                  <span class="badge badge-primary badge-pill">1</span>
-                </li>
-            </ul>
+        <div  class="col-12">
+
         </div>
-        <div class="col-10 table-responsive">
-            <table class="table table-dark">
+        <div class="col-12">
+            <table class="table table-responsive{-sm|-md|-lg|-xl} table-sm table-hover">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -66,7 +47,7 @@
                     <td>
                         <a href="/view/student/{{$student->id}}" class="btn btn-info">View</a>
                     </td>
-                    <td>
+                    {{-- <td>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Records
@@ -76,7 +57,7 @@
                                 <a class="dropdown-item" href="/record/new/{{$student->id}}" >Add New Record</a>
                             </div>
                         </div>
-                    </td>
+                    </td> --}}
                   </tr>
                   @endforeach
                 </tbody>

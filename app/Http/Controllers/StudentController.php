@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Relationship;
 use App\Student;
+use App\Record;
 
 class StudentController extends Controller
 {
@@ -57,9 +58,10 @@ class StudentController extends Controller
         $new_student->guardian_contact = $request->input('guardian_contact');
         //$new_student->student_picture = $request->input('student_picture');
         $new_student->relationship_id = $request->input('relationship');
+        $name = $request->input('name');
         $new_student->save();
         
-        return redirect()->action('HomeController@index');
+        return redirect()->action('HomeController@index')->with('success', '$name was successfully added');
     }
 
     /**
@@ -71,8 +73,9 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = Student::find($id);
-        // dd($student);
-        return view('student.view')->with('student', $student);
+        $records = Record::where('student_id', $id)->get();
+        //dd($records);
+        return view('student.view', compact('student', 'records'));
     }
 
     /**
@@ -81,6 +84,8 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     
     public function edit($id)
     {   
         $student = Student::find($id);

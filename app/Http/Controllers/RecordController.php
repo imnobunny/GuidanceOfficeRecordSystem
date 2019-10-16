@@ -67,9 +67,15 @@ class RecordController extends Controller
         $new_record->student_id = $request->input('student_id');
         $new_record->status_id = $request->input('status_id');
         $id =  $request->input('student_id');
+        //gets the latest records
+        $student_id = $request->input('student_id');
         $new_record->save();
 
-        return redirect("/records/{$id}");
+        //$latest_record_id = Record::select('id')->where('student_id', $student_id)->OrderBy('updated_at', 'desc')->first();
+        //dd($latest_record);
+       
+        return redirect("/view/student/{$student_id}")->with('success', "Successfully added new record");
+        //return redirect("/records/{$id}");
     }
 
     /**
@@ -121,8 +127,6 @@ class RecordController extends Controller
        ]);
 
       
-        $student = Student::find($id);
-        $student ->name = $request->input('name');
     
         $record = Record::find($id);
         $record->case_title = $request->input('case_title');
@@ -137,7 +141,7 @@ class RecordController extends Controller
         $record->status_id = $request->input('status_id');
         $record->save();
 
-        return redirect()->back()->with('success', "test alert");
+        return redirect()->back()->with('success', "Successfully edited");
     }
     /**
      * Remove the specified resource from storage.
@@ -172,8 +176,7 @@ class RecordController extends Controller
         $student = Student::find($id);
         $advisers = Adviser::all();
         //dd($student);
-        return view ('record.create', compact('student', 'advisers'));
-
+        return view('record.create', compact('student', 'advisers'));
     }
 
 }
