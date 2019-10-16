@@ -16,7 +16,7 @@
                     </div>
                 <div class="form-group p-2">    
                     <a href="/add/student" class="btn btn-info"> <i class="fas fa-2 fa-user-plus"></i> Add New Student</a>
-                    <button type="button" class="btn btn-warning"> <i class="fas fa-file-medical"></i> Add New Record</button>
+                    {{-- <button type="button" class="btn btn-warning"> <i class="fas fa-file-medical"></i> Add New Record</button> --}}
                 </div>
                
             </form>
@@ -46,6 +46,7 @@
                     <td>{{$student->contact_number}}</td>
                     <td>
                         <a href="/view/student/{{$student->id}}" class="btn btn-info">View</a>
+                        
                     </td>
                     {{-- <td>
                         <div class="dropdown">

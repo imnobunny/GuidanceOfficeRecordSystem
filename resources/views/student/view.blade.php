@@ -35,6 +35,14 @@
                             <h5>Relationship to the Guardian: {{$student->relationship->relationship}}</h5>
                             <h6>Date Created: {{$student->created_at}}</h6>
                             <h6>Date Updated: {{$student->updated_at}}</h6>
+                            <div>
+                              <a href="/edit/student/{{$student->id}}" class="btn btn-primary">Edit</a>
+                              @If(Auth::user()->role_id == '1')
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteStudent">Delete</a>
+                              @else
+                              
+                              @endif
+                            </div>
                           </div>  
                       </div>
                     </div>
@@ -61,8 +69,7 @@
                                 @foreach($records as $record)
                               <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
-                                <td>
-                                  {{$record->case_title}}</td>
+                                <td>{{$record->case_title}}</td>
                                 <td>{{$record->grade_year}}</td>
                                 <td>{{$record->penalty}}</td>
                                 <td>{{$record->status->status}}</td>
@@ -166,7 +173,7 @@
     </div> --}}
 
 <!-- Modal For Delete Student-->
-<div class="modal fade" id="deleteStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+ <div class="modal fade" id="deleteStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -183,9 +190,8 @@
          <form action="/delete/student/{{$student->id}}" method="">
             {{ csrf_field() }}
            {{method_field('delete')}}
-           <input type="submit" name="Test" id="" class="btn btn-warning btn-delete-student">
-            {{-- <a href="/delete/student/{{$student->id}}" class="btn btn-warning btn-delete-student">Delete test</a> --}}
-         </form>
+           <button input type="submit" name="delete" class="btn btn-warning btn-delete-student">Yes, Delete.</button>
+         </form> 
           
           </form>
         </div>

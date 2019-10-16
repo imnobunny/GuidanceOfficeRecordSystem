@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/record/new/{id}', 'RecordController@addrecord');
 	Route::get('/record/view/{id}', 'RecordController@show');
 	Route::get('/record/edit/{id}', 'RecordController@edit');
-	Route::delete('/record/delete/{id}', 'RecordController@destroy');
+	Route::get('/record/delete/{id}', 'RecordController@destroy');
 	Route::post('/record/update/{id}', 'RecordController@update');
 });
 
