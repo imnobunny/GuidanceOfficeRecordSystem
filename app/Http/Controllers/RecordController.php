@@ -155,9 +155,9 @@ class RecordController extends Controller
         $id_del = $record->id;
         $student_id = $record->student_id;
         $record->delete();
-
+        //dd($id);
         return redirect("/view/student/$student_id")->with('success', 'successfully deleted')
-        ->with('undo_url','/record/restore/{$id}');
+        ->with('undo_url',"/record/restore/$id");
     }
 
     public function allrecords($id)
