@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RelationshipsTableSeeder extends Seeder
+class StatusesTableSeeder extends Seeder
 {
 
     /**
@@ -14,36 +14,29 @@ class RelationshipsTableSeeder extends Seeder
     {
         
 
-        \DB::table('relationships')->delete();
+        \DB::table('statuses')->delete();
         
-        \DB::table('relationships')->insert(array (
+        \DB::table('statuses')->insert(array (
             0 => 
             array (
                 'id' => 1,
-                'relationship' => 'Mother',
+                'status' => 'New',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             1 => 
             array (
                 'id' => 2,
-                'relationship' => 'Father',
+                'status' => 'On-going',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             2 => 
             array (
                 'id' => 3,
-                'relationship' => 'Relatives',
+                'status' => 'Closed',
                 'created_at' => NULL,
                 'updated_at' => NULL,
-            ),
-            3 => 
-            array (
-                'id' => 5,
-                'relationship' => 'Sibling',
-                'created_at' => '2019-10-19 13:46:30',
-                'updated_at' => '2019-10-19 13:46:30',
             ),
         ));
         
