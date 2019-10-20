@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-2">
+<div class="container mt-4">
     <div class="row">
-        <div class="col-12 mb-1">
+        <div class="col-12 mb-1 mt-2">
             <form action="">
                     <div class="d-flex bd-highlight">
                         <div class="p-2 w-100 bd-highlight">
