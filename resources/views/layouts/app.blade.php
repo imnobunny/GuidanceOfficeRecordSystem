@@ -53,7 +53,10 @@
                                 </li>
                             @endif
                         @else
-                                
+                            @if(Auth::user()->role_id == 1)
+                            <li class="mt-2"><a href="/admin">Manage Page</a></li>
+                            @else
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
@@ -71,22 +74,18 @@
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @include('partials.alert')  
             @yield('content')
-          
         </main>
     </div>
-    <script src="{{ asset('js/addNewStudent.js') }}" ></script>
-    <script src="{{ asset('js/editStudent.js') }}" ></script>
-    <script src="{{ asset('js/addRecord.js') }}" ></script>
-    <script src="{{ asset('js/viewRecord.js') }}" ></script>
-    <script src="{{ asset('js/editRecord.js') }}" ></script>
+    <script src="{{ asset('js/alert.js') }}" ></script>
 </body>
 </html>

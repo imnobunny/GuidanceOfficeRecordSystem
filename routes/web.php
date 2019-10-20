@@ -33,10 +33,18 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/record/edit/{id}', 'RecordController@edit');
 	Route::get('/record/delete/{id}', 'RecordController@destroy');
 	Route::post('/record/update/{id}', 'RecordController@update');
+
+	Route::group(['middleware' => 'isAdmin'], function(){
+		Route::get('/admin', 'AdminController@index');
+		Route::get('/admin/{id}', 'AdminController@changerole');
+		Route::get('/admin/create/relationship', 'AdminController@addRelationship');
+		Route::get('/record/restore/{id}', 'RecordController@restore');
+	});
+	
 });
 
 
-//students
+
 
 
 

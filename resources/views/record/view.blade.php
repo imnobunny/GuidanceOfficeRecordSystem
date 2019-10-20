@@ -10,7 +10,10 @@
                 <h4 class="mr-auto">Student Name: {{$record->student->name}}</h4>
                 <h5 class="mr-auto">Home Address: {{$record->student->home_address}}</h5>
                 <a href="/record/edit/{{$record->id}}" class="btn btn-primary mr-2">Edit</a>
+                @if(Auth::user()->role_id == 1)
                 <button class="btn btn-info" data-toggle="modal" data-target="#deleteRecord">Delete</button>
+                @else
+                @endif
                 </div>
             </div>
             <div class="col-6">

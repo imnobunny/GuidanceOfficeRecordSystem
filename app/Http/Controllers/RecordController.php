@@ -152,10 +152,12 @@ class RecordController extends Controller
     public function destroy($id)
     {
         $record = Record::find($id);
+        $id_del = $record->id;
         $student_id = $record->student_id;
         $record->delete();
 
-        return redirect("/view/student/$student_id");
+        return redirect("/view/student/$student_id")->with('success', 'successfully deleted')
+        ->with('undo_url','/record/restore/{$id}');
     }
 
     public function allrecords($id)
@@ -179,4 +181,18 @@ class RecordController extends Controller
         return view('record.create', compact('student', 'advisers'));
     }
 
+    public function restore($id)
+    {
+
+        //dd($id);
+        $record = Record::onlyTrashed()
+        ->where('id', $id)
+        ->first();
+        //dd($record);
+
+        $record->restore();
+        return back()->with("success", "has been restored!");
+
+
+    }
 }

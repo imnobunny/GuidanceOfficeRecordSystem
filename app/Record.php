@@ -3,9 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Record extends Model
 {
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     public function student()
     {
         return $this->belongsTo('App\Student');
@@ -23,5 +29,9 @@ class Record extends Model
     public function advisers()
     {
         return $this->hasMany('App\Advisers');
+    }
+    public function records()
+    {
+        return $this->belongsToMany('App\User');
     }
 }

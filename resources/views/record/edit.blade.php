@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-7">
                 <h5>Student Name: {{$record->student->name}}</h5>
@@ -59,7 +59,7 @@
                         <input type="hidden" value="{{$record->id}}" name="record_id" id="record_id">
                     </div>
                     <div class="col-12 form-group mt-4">
-                        <button class="btn btn-danger form-control" data-toggle="modal" data-target="#confirmation" type="submit">Save</button>
+                        <button class="btn btn-danger form-control btn-alert" data-toggle="modal" data-target="#confirmation" type="submit">Save</button>
                         <a href="{{ url()->previous() }}" class="btn btn-primary form-control mt-2">Back</a>
                     </div>   
                 </form>
