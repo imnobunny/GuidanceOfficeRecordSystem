@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-6">
                 <div>
@@ -32,12 +32,14 @@
                         <input type="text" class="form-control" value="" name="penalty">
                     </div>
                     <div class="form-group ">
-                        <select name="adviser_id" id="adviser_id" class="py-2 px-2">
+                        <select name="adviser_id" id="adviser_id" class="py-2 px-2 form-control">
                                 @foreach($advisers as $adviser) --}}
-                        <option value="{{$adviser->id}}" class="form-control">{{$adviser->teacher_name}}</option>
+                        <option value="{{$adviser->id}}">{{$adviser->teacher_name}}</option>
                                 @endforeach --}}
                         </select>
-                        <select name="grade_year" id="grade_year" class="py-2 px-2 ">
+                    </div>
+                    <div class="form-group">
+                        <select name="grade_year" id="grade_year" class="py-2 px-2 form-control">
                             <option value="Grade 7" class="form-control">Grade 7</option>
                             <option value="Grade 8" class="form-control">Grade 8</option>
                             <option value="Grade 9" class="form-control">Grade 9</option>

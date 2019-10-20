@@ -80,6 +80,15 @@
                        @endauth
                    </div>
                @endif
-   
-               <div class="content">
+                
+               <div class="container">
+                   <div class="row">
+                       <div class="col">
+                           <h1>Guidance Office Record System</h1>
+                           Developed By: <a href="https://ph.linkedin.com/in/sairabunnyespino" class="text-center">Saira Bunny Espino</a>
+                       </div>
+                       
+                   </div>
+               </div>
+                
                    
