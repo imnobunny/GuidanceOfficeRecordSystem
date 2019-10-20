@@ -66,7 +66,7 @@ class RecordController extends Controller
         $new_record->user_id = $request->input('user_id');
         $new_record->student_id = $request->input('student_id');
         $new_record->status_id = $request->input('status_id');
-        $id =  $request->input('student_id');
+        //$student_name =  $request->input('student_id');
         //gets the latest records
         $student_id = $request->input('student_id');
         $new_record->save();
@@ -74,7 +74,7 @@ class RecordController extends Controller
         //$latest_record_id = Record::select('id')->where('student_id', $student_id)->OrderBy('updated_at', 'desc')->first();
         //dd($latest_record);
        
-        return redirect("/view/student/{$student_id}")->with('success', "Successfully added new record");
+        return redirect("/view/student/{$student_id}")->with('success', "Successfully added new record for ");
         //return redirect("/records/{$id}");
     }
 
@@ -137,11 +137,12 @@ class RecordController extends Controller
         $record->user_id = $request->input('user_id');
         $record->adviser_id = $request->input('adviser_id');
         $record->student_id = $request->input('student_id');
-        $student_id = $record->student_id;
+        $case_name = $request->input('case_title');
+        $student_name = $record->student->name;
         $record->status_id = $request->input('status_id');
         $record->save();
 
-        return redirect()->back()->with('success', "Successfully edited");
+        return redirect()->back()->with('success', "Case title $case_name of student $student_name has been successfully edited");
     }
     /**
      * Remove the specified resource from storage.
@@ -154,9 +155,10 @@ class RecordController extends Controller
         $record = Record::find($id);
         $id_del = $record->id;
         $student_id = $record->student_id;
+        $record_name = $record->student->name;
         $record->delete();
         //dd($id);
-        return redirect("/view/student/$student_id")->with('success', 'successfully deleted')
+        return redirect("/view/student/$student_id")->with("success", "Successfully deleted record of $record_name")
         ->with('undo_url',"/record/restore/$id");
     }
 
@@ -188,10 +190,9 @@ class RecordController extends Controller
         $record = Record::onlyTrashed()
         ->where('id', $id)
         ->first();
-        //dd($record);
-
+        $record_name = $record->case_title;
         $record->restore();
-        return back()->with("success", "has been restored!");
+        return back()->with("success", "Case title: $record_name has been restored!");
 
 
     }

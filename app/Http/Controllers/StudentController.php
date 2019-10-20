@@ -61,7 +61,7 @@ class StudentController extends Controller
         $name = $request->input('name');
         $new_student->save();
         
-        return redirect()->action('HomeController@index')->with('success', '$name was successfully added');
+        return redirect()->action('HomeController@index')->with('success', "$name was successfully added");
     }
 
     /**
@@ -121,9 +121,10 @@ class StudentController extends Controller
         $student ->guardian_name = $request->input('guardian_name');
         $student ->guardian_contact = $request->input('guardian_contact');
         $student ->relationship_id = $request->input('relationship');
+        $student_name = $request->input('name');
         $student->save();
 
-        return redirect("/view/student/$id");
+        return redirect("/view/student/$id")->with('success', "$student_name was successfully updated");
     }
 
     /**
@@ -135,7 +136,8 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id);
+        $student_name = $student->name;
         $student->delete();
-        return redirect()->action('HomeController@index');
+        return redirect()->action('HomeController@index')->with('success', "$student_name was successfully deleted");
     }
 }
