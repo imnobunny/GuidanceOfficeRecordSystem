@@ -24,11 +24,11 @@
                 </div>  
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="">Home Address</label>
-                        <input type="text" class="form-control" name="home_address" value="{{$student->home_address}}">
+                        <input type="tel" class="form-control" name="home_address" value="{{$student->home_address}}">
                     </div>
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="">Contact Number</label>
-                        <input type="text" class="form-control" name="student_contact" value="{{$student->contact_number}}">
+                        <input type="tel" class="form-control input-phone" name="student_contact" value="{{$student->contact_number}}"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="000-00-000" required>
                     </div>  
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="">Guardian Name</label>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="">Guardian Contact</label>
-                        <input type="text" class="form-control" name="guardian_contact" value="{{$student->guardian_contact}}">
+                        <input type="tel" class="form-control" name="guardian_contact" value="{{$student->guardian_contact}}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="000-00-000" required>
                     </div>
                     <div class="form-group mt-3 py-1 px-3">
                         <label for="" class="mr-2">Relationship to the Guardian</label>

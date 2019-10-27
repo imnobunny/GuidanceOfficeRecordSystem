@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Record;
 use App\Student;
 use App\Adviser;
 use App\Status;
+use App\History;
 use Session;
+use App\Comment;
+//to use auth::user in controllers.
+use Illuminate\Support\Facades\Auth;
+
 
 
 class RecordController extends Controller
@@ -66,16 +72,24 @@ class RecordController extends Controller
         $new_record->user_id = $request->input('user_id');
         $new_record->student_id = $request->input('student_id');
         $new_record->status_id = $request->input('status_id');
-        //$student_name =  $request->input('student_id');
-        //gets the latest records
+        //vars to use in alerts
         $student_id = $request->input('student_id');
+        $case_title = $request->input('case_title');
+        // data to add in history
+        $user_id = $request->input('user_id');
+        $case_title = $request->input('case_title');
         $new_record->save();
-
-        //$latest_record_id = Record::select('id')->where('student_id', $student_id)->OrderBy('updated_at', 'desc')->first();
-        //dd($latest_record);
+        $record_id = $new_record->id;
+        // history
+        $add_history = new History;
+        $add_history->user_id = $user_id;
+        $add_history->record_id = $record_id;
+        $add_history->changes_made = "Created new record with title $case_title";
+        $add_history->save();
+        //save new record
        
-        return redirect("/view/student/{$student_id}")->with('success', "Successfully added new record for ");
-        //return redirect("/records/{$id}");
+        return redirect("/view/student/{$student_id}")->with('success', "Successfully added new record for with case title: $case_title");
+
     }
 
     /**
@@ -87,7 +101,10 @@ class RecordController extends Controller
     public function show($id)
     {  
         $record = Record::find($id);
-        return view ('record.view')->with('record', $record);
+        $histories = History::where('record_id', $id)->get();
+        $comments = Comment::where('record_id', $id)->get();
+
+        return view ('record.view', compact('record', 'histories', 'comments'));
     }
 
     /**
@@ -124,6 +141,7 @@ class RecordController extends Controller
         'adviser_id' => 'required',
         'student_id' => 'required',
         'status_id' => 'required',
+        'updated_by' => 'required'
        ]);
 
       
@@ -137,9 +155,16 @@ class RecordController extends Controller
         $record->user_id = $request->input('user_id');
         $record->adviser_id = $request->input('adviser_id');
         $record->student_id = $request->input('student_id');
+        // vars use in alerts
         $case_name = $request->input('case_title');
         $student_name = $record->student->name;
         $record->status_id = $request->input('status_id');
+        //add history
+        $add_history = new History;
+        $add_history->user_id = $request->input('updated_by');
+        $add_history->record_id = $id;
+        $add_history->changes_made = "edited the details of the case";
+        $add_history->save();
         $record->save();
 
         return redirect()->back()->with('success', "Case title $case_name of student $student_name has been successfully edited");
@@ -191,6 +216,14 @@ class RecordController extends Controller
         ->where('id', $id)
         ->first();
         $record_name = $record->case_title;
+
+        // add history
+        $add_history = new History;
+        $add_history->user_id= Auth::user()->id;
+        $add_history->record_id= $id;
+        $add_history->changes_made="case title $record_name has been restored";
+        $add_history->save();
+
         $record->restore();
         return back()->with("success", "Case title: $record_name has been restored!");
 

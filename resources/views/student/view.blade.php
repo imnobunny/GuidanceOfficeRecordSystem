@@ -14,7 +14,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Adviser</a>
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">History</a>
             </li>
           </ul>
           <div class="tab-content col-12" id="myTabContent">
@@ -82,21 +82,6 @@
                                    </a>
                                    <a href="/record/edit/{{$record->id}}" class="btn btn-primary">Edit</a>
                                 </td>
-                                {{-- <td>
-                                    <a href="/record/view/{{$record->id}}" class="btn btn-primary btn-view-record"
-                                      data-case ="{{$record->case_title}}" data-year = "{{$record->grade_year}}" data-complain = "{{$record->complain}}"
-                                      data-complainant = "{{$record->complainant}}" data-penalty ="{{$record->penalty}}" data-user ="{{$record->user_id}}" 
-                                      data-adviser ="{{$record->adiviser_id}}" data-student ="{{$record->student_id}}">
-                                      view
-                                   </a>
-                                   <a href="/record/edit/{{$record->id}}" class="btn btn-warning">
-                                     Edit
-                                   </a>
-                                    </a>
-                                   <a href="" class="btn btn-danger" data-toggle="modal" data-target="#deleteRecord">
-                                     Delete
-                                   </a>
-                                </td> --}}
                               </tr>
                               @endforeach
                               <tr>
@@ -118,59 +103,14 @@
                   </div>
                 </div>
             
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            
+           
+            </div>
           </div>
     </div>
   </div>
 </div>
-
-{{-- <div class="container ml-3 mr-3">
-    <div class="row">
-        <div class="col-6  py-3">
-                <div class="form-group">
-                    <div class="col-12 float-right mb-2">
-                        <img src="{{$student->student_picture}}" alt="..." class="img-thumbnail  float-right">
-                    </div>
-                </div>
-                <div class="form-group mt-3 py-1 px-3">
-                    <label for="name">Student Name</label>
-                <input type="text" class="form-control" value="{{$student->name}}" readonly>
-                </div>
-                <div class="form-group py-1 px-3">
-                    <label for="">Gender</label>
-                    <input type="text" class="form-control" value="{{$student->gender}}" readonly>
-                </div>  
-                    <div class="form-group mt-3 py-1 px-3">
-                        <label for="">Home Address</label>
-                        <input type="text" class="form-control" value="{{$student->home_address}}" readonly>
-                    </div>
-                    <div class="form-group mt-3 py-1 px-3">
-                        <label for="">Contact Number</label>
-                        <input type="text" class="form-control" value="{{$student->contact_number}}" readonly>
-                    </div>  
-                    <div class="form-group mt-3 py-1 px-3">
-                        <label for="">Guardian Name</label>
-                        <input type="text" class="form-control" value="{{$student->guardian_name}}" readonly>
-                    </div>
-                    <div class="form-group mt-3 py-1 px-3">
-                        <label for="">Guardian Contact</label>
-                        <input type="text" class="form-control" value="{{$student->guardian_contact}}" readonly>
-                    </div>
-                    <div class="form-group mt-3 py-1 px-3">
-                        <label for="" class="mr-2">Relationship to the Guardian</label>
-                    <input type="text" class="form-control" value="{{$student->relationship->relationship}}" readonly>
-                        <option value=""></option>
-                            
-                        </select>
-                    </div>
-                    <div class="form-group d-flex flex-row-reverse bd-highlight">
-                        <a href="/edit/student/{{$student->id}}" class="btn btn-warning p-2 bd-highlight mr-2 ">Edit Student Info</a>
-                        <a href="#" class="btn btn-danger p-2 bd-highlight mr-2" data-toggle="modal" data-target="#deleteStudent">Delete Student</a>
-                        <a href="{{ URL()->previous()}}" class="btn btn-info p-2 bd-highlight mr-2">Back</a>
-                    </div>
-            </form>       
-        </div>
-    </div> --}}
 
 <!-- Modal For Delete Student-->
  <div class="modal fade" id="deleteStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

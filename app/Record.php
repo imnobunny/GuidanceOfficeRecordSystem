@@ -30,8 +30,15 @@ class Record extends Model
     {
         return $this->hasMany('App\Advisers');
     }
-    public function records()
+    public function user()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsTo('App\User');
     }
+
+    public function histories()
+    {
+        return $this->hasMany('App\History');
+    }
+
+   
 }

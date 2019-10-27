@@ -15,7 +15,7 @@
 
                     </div>
                 <div class="form-group p-2">    
-                    <a href="/add/student" class="btn btn-info"> <i class="fas fa-2 fa-user-plus"></i> Add New Student</a>
+                    <a href="/add/student" class="btn btn-warning"> <i class="fas fa-2x fa-user-plus"></i> Add New Student</a>
                     {{-- <button type="button" class="btn btn-warning"> <i class="fas fa-file-medical"></i> Add New Record</button> --}}
                 </div>
                

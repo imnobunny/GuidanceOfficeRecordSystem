@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Relationship;
 use App\Student;
 use App\Record;
+use App\History;
 
 class StudentController extends Controller
 {
@@ -74,7 +75,6 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
         $records = Record::where('student_id', $id)->get();
-        //dd($records);
         return view('student.view', compact('student', 'records'));
     }
 

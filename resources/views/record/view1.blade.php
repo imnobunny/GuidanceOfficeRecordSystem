@@ -18,7 +18,7 @@
                               <tr>
                                 <th scope="row"></th>
                                 <td scope="col" colspan="6">
-                                    <p class="text-center mt-3">No Records Found</p>
+                                    <p class="text-center mt-3">No Records Founds</p>
                                 </td>
                               </tr>
                             </tbody>

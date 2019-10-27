@@ -33,6 +33,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/record/edit/{id}', 'RecordController@edit');
 	Route::get('/record/delete/{id}', 'RecordController@destroy');
 	Route::post('/record/update/{id}', 'RecordController@update');
+	Route::get('/record/comment/{id}', 'CommentController@addcomment');
+	Route::get('/record/pdf/{id}-pdf', 'ExportController@exportdatatopdf');
+	// Route::get('/record/pdf/{id}', function(){
+	// 	$pdf = PDF::loadView('pdf.record');
+	// 	return $pdf->download('record.pdf');
+	// });
 
 	Route::group(['middleware' => 'isAdmin'], function(){
 		Route::get('/admin', 'AdminController@index');

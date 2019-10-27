@@ -56,7 +56,7 @@
                         {{-- student id --}}
                         <input type="hidden" name="student_id" id="student_id" value="{{$student->id}}">
                         {{-- status default status is 1 --}}
-                        <input type="hidden" name="status_id" id="status_id" value="1"> 
+                        <input type="hidden" name="status_id" id="status_id" value="1">
                     </div>
                    
                 </form>
