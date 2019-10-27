@@ -90,7 +90,7 @@
                        <div class="col-5">
                            <ul>
                                <li>
-                                   Create, Edit, Update student's information 
+                                   Create, Edit, Delete student's information 
                                </li>
                                <li>
                                     And use to store and track students' school record.
