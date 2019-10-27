@@ -13,8 +13,6 @@ class ExportController extends Controller
     {
         $record = Record::find($id);
         $student_name = $record->student->name;
-        //$data = $record;
-        //return view ('pdf.record')->with('record', $record);
         $pdf = \PDF::loadview('pdf.record', compact('record'));
         return $pdf->download("$student_name Case_Record.pdf");
     }
