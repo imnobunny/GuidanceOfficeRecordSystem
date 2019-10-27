@@ -83,11 +83,23 @@
                 
                <div class="container">
                    <div class="row">
-                       <div class="col">
+                       <div class="col-7">
                            <h1>Guidance Office Record System</h1>
-                           Developed By: <a href="https://ph.linkedin.com/in/sairabunnyespino" class="text-center">Saira Bunny Espino</a>
+                           Created and Developed By: <a href="https://ph.linkedin.com/in/sairabunnyespino" class="text-center">Saira Bunny Espino</a>
                        </div>
-                       
+                       <div class="col-5">
+                           <ul>
+                               <li>
+                                   Create, Edit, Update student's information 
+                               </li>
+                               <li>
+                                    And use to store and track students' school record.
+                               </li>
+                               <li>
+                                    Export Student's information and school record to PDF
+                               </li>
+                           </ul>
+                        </div>
                    </div>
                </div>
                 
